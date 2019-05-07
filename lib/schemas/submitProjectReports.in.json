@@ -1,0 +1,23 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "activity_type": {
+                    "description": "Activity Type",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Report Message",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

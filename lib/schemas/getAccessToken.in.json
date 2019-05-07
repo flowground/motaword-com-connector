@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "grant_type": {
+                    "description": "OAuth2 grant type. Currently only 'client_credentials' available.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "grant_type"
+            ]
+        }
+    }
+}

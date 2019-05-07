@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "activityId": {
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+        },
+        "requestBody": {
+            "type": "object",
+            "properties": {
+                "comment": {
+                    "description": "Comment text.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "comment"
+            ]
+        }
+    }
+}

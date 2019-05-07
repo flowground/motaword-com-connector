@@ -1,0 +1,846 @@
+{
+    "title": "MotaWord",
+    "description": "Use MotaWord API to post and track your translation projects.",
+    "docsUrl": "https://www.motaword.com/developer",
+    "url": "https://api.apis.guru/v2/specs/motaword.com/1.0/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.motaword.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "client_credentials": {
+                "label": "OAuth2 authentication, Client Credentials flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://api.motaword.com/token",
+            "token_uri": "https://api.motaword.com/token"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "getEndpoints": {
+            "main": "./lib/actions/getEndpoints.js",
+            "title": "Available endpoints",
+            "description": "The root endpoint will provide you a JSON Swagger definition.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getEndpoints.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getFormats": {
+            "main": "./lib/actions/getFormats.js",
+            "title": "Get a list of supported formats",
+            "description": "Get a list of supported formats for documents, style guides and extensions.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getFormats.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "downloadGlobalGlossary": {
+            "main": "./lib/actions/downloadGlobalGlossary.js",
+            "title": "Download the global glossary.",
+            "description": "Download your corporate account's global glossary. This endpoint is available only for corporate account customers.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/downloadGlobalGlossary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateGlobalGlossary": {
+            "main": "./lib/actions/updateGlobalGlossary.js",
+            "title": "Create or update the global glossary.",
+            "description": "Update your corporate account's global glossary. This endpoint is available only for corporate account customers.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateGlobalGlossary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getLanguages": {
+            "main": "./lib/actions/getLanguages.js",
+            "title": "Get a list of supported languages",
+            "description": "Get a list of supported languages",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getLanguages.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAccount": {
+            "main": "./lib/actions/getAccount.js",
+            "title": "Get your account information and summary.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getProjects": {
+            "main": "./lib/actions/getProjects.js",
+            "title": "Get a list of your projects",
+            "description": "Get a list of your projects",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getProjects.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createProject": {
+            "main": "./lib/actions/createProject.js",
+            "title": "Get a new quote",
+            "description": "Create a new project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteProject": {
+            "main": "./lib/actions/deleteProject.js",
+            "title": "Delete a project",
+            "description": "Delete(cancel) a project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getProject": {
+            "main": "./lib/actions/getProject.js",
+            "title": "Get single project",
+            "description": "Get single project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateProject": {
+            "main": "./lib/actions/updateProject.js",
+            "title": "Update project language pairs",
+            "description": "Update project language pairs",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "triggerCallback": {
+            "main": "./lib/actions/triggerCallback.js",
+            "title": "Trigger a call to your callback URL related to this project.",
+            "description": "Trigger a call to your callback URL related to this project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/triggerCallback.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cancelProject": {
+            "main": "./lib/actions/cancelProject.js",
+            "title": "Cancel your translation project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cancelProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "download": {
+            "main": "./lib/actions/download.js",
+            "title": "Download the latest translation package.",
+            "description": "Download the latest translation package. You must have given a /package call beforehand and wait until the packaging status is 'completed'.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/download.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "downloadLanguage": {
+            "main": "./lib/actions/downloadLanguage.js",
+            "title": "Download the latest translation package.",
+            "description": "Download only the translation package of this language. You must have given a /package call beforehand and wait until the packaging status is 'completed'.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/downloadLanguage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "launchProject": {
+            "main": "./lib/actions/launchProject.js",
+            "title": "Launch your translation project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/launchProject.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "package": {
+            "main": "./lib/actions/package.js",
+            "title": "Package the translation of all languages to be downloaded.",
+            "description": "Package the translation project, make it ready to be downloaded.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/package.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "trackPackage": {
+            "main": "./lib/actions/trackPackage.js",
+            "title": "Track the status of translation packaging.",
+            "description": "This request will tell you the current progress of the translation packaging. You will use the 'key' provided by the /package call.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/trackPackage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "packageLanguage": {
+            "main": "./lib/actions/packageLanguage.js",
+            "title": "Package the translation of a specific target language to be downloaded.",
+            "description": "Package the translation project, make it ready to be downloaded.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/packageLanguage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getProgress": {
+            "main": "./lib/actions/getProgress.js",
+            "title": "Get project progress",
+            "description": "Get the progress of an already launched project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getProgress.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "submitProjectReports": {
+            "main": "./lib/actions/submitProjectReports.js",
+            "title": "Submit reports for a project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/submitProjectReports.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getActivities": {
+            "main": "./lib/actions/getActivities.js",
+            "title": "Get a list of realtime activities.",
+            "description": "Get a list of realtime activities on the project, such as translation suggestion and translation approval.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getActivities.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getActivity": {
+            "main": "./lib/actions/getActivity.js",
+            "title": "Get a single realtime activity.",
+            "description": "Get a single realtime activity.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getActivity.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "submitComment": {
+            "main": "./lib/actions/submitComment.js",
+            "title": "Submit a comment to an activity.",
+            "description": "Submit a comment to an activity.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/submitComment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getActivityComments": {
+            "main": "./lib/actions/getActivityComments.js",
+            "title": "Get a list of comments belonging to this activity.",
+            "description": "Get a list of comments belonging to this activity.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getActivityComments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getComments": {
+            "main": "./lib/actions/getComments.js",
+            "title": "Get a list of activity comments throughout the whole project.",
+            "description": "Get a list of activity comments throughout the whole project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getComments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDocuments": {
+            "main": "./lib/actions/getDocuments.js",
+            "title": "Get a list of documents",
+            "description": "Get a list of documents",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDocuments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createDocument": {
+            "main": "./lib/actions/createDocument.js",
+            "title": "Upload a new document",
+            "description": "Upload a new document",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createDocument.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteDocument": {
+            "main": "./lib/actions/deleteDocument.js",
+            "title": "Delete the document",
+            "description": "Delete the document",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteDocument.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getDocument": {
+            "main": "./lib/actions/getDocument.js",
+            "title": "Get single document",
+            "description": "Get single document",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getDocument.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateDocument": {
+            "main": "./lib/actions/updateDocument.js",
+            "title": "Update the document.",
+            "description": "Update the document. File name and contents will replaced with the new one.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateDocument.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "downloadDocument": {
+            "main": "./lib/actions/downloadDocument.js",
+            "title": "Download a document",
+            "description": "Download a document",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/downloadDocument.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getGlossaries": {
+            "main": "./lib/actions/getGlossaries.js",
+            "title": "Get a list of glossaries",
+            "description": "Get a list of glossaries",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getGlossaries.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createGlossary": {
+            "main": "./lib/actions/createGlossary.js",
+            "title": "Upload a new glossary",
+            "description": "Upload a new glossary",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createGlossary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteGlossary": {
+            "main": "./lib/actions/deleteGlossary.js",
+            "title": "Delete the glossary",
+            "description": "Delete the glossary",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteGlossary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getGlossary": {
+            "main": "./lib/actions/getGlossary.js",
+            "title": "Get single glossary",
+            "description": "Get single glossary",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getGlossary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateGlossary": {
+            "main": "./lib/actions/updateGlossary.js",
+            "title": "Update the glossary.",
+            "description": "Update the glossary. File name and contents will replaced with the new one.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateGlossary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "downloadGlossary": {
+            "main": "./lib/actions/downloadGlossary.js",
+            "title": "Download a glossary",
+            "description": "Download a glossary",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/downloadGlossary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getStyleGuides": {
+            "main": "./lib/actions/getStyleGuides.js",
+            "title": "Get a list of style guides",
+            "description": "Get a list of style guides",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getStyleGuides.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createStyleGuide": {
+            "main": "./lib/actions/createStyleGuide.js",
+            "title": "Upload a new style guide",
+            "description": "Upload a new style guide",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createStyleGuide.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "deleteStyleGuide": {
+            "main": "./lib/actions/deleteStyleGuide.js",
+            "title": "Delete the style guide",
+            "description": "Delete the style guide",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteStyleGuide.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getStyleGuide": {
+            "main": "./lib/actions/getStyleGuide.js",
+            "title": "Get single style guide",
+            "description": "Get single style guide",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getStyleGuide.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateStyleGuide": {
+            "main": "./lib/actions/updateStyleGuide.js",
+            "title": "Update the style guide.",
+            "description": "Update the style guide. File name and contents will replaced with the new one.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateStyleGuide.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "downloadStyleGuide": {
+            "main": "./lib/actions/downloadStyleGuide.js",
+            "title": "Download a style guide",
+            "description": "Download a style guide",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/downloadStyleGuide.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "downloadGlobalStyleGuide": {
+            "main": "./lib/actions/downloadGlobalStyleGuide.js",
+            "title": "Download the global style guide.",
+            "description": "Download your corporate account's global style guide. This endpoint is available only for corporate account customers.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/downloadGlobalStyleGuide.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateGlobalStyleGuide": {
+            "main": "./lib/actions/updateGlobalStyleGuide.js",
+            "title": "Create or update the global style guide.",
+            "description": "Update your corporate account's global style guide. This endpoint is available only for corporate account customers.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateGlobalStyleGuide.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAccessToken": {
+            "main": "./lib/actions/getAccessToken.js",
+            "title": "Retrieve an access token to interact with the API.",
+            "description": "MotaWord API is using OAuth2 procedures when authenticating or authorizing your API call. Currently, we only allow Client Credential type flow.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAccessToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
